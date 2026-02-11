@@ -16,39 +16,42 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '#' },
     { name: 'About', href: '#about' },
-    { name: 'Sectors', href: '#sectors' },
-    { name: 'Values', href: '#values' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Portfolio', href: '#sectors' },
+    { name: 'Philosophy', href: '#values' },
   ];
 
   return (
     <nav 
-      className={`fixed w-full z-50 transition-all duration-300 ${ 
-        isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-md py-4' : 'bg-transparent py-6'
+      className={`fixed w-full z-50 transition-all duration-500 ${ 
+        isScrolled ? 'bg-[#0c0a09]/95 backdrop-blur-md shadow-lg py-4 border-b border-stone-800' : 'bg-transparent py-8'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <div className="bg-amber-600 p-2 rounded-lg mr-3">
-              <Building2 className="h-6 w-6 text-white" />
+          <div className="flex items-center group cursor-pointer">
+            <div className="border border-[#d4af37] p-2 mr-3 transition-all duration-500 group-hover:bg-[#d4af37]">
+              <Building2 className="h-5 w-5 text-[#d4af37] group-hover:text-[#0c0a09] transition-colors" />
             </div>
-            <span className={`text-xl font-bold tracking-tight ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
-              DHARAMSHAKTU <span className="text-amber-600">GROUP</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="text-lg font-serif font-bold tracking-widest text-white">
+                DHARAMSHAKTU
+              </span>
+              <span className="text-[0.65rem] uppercase tracking-[0.3em] text-[#d4af37]">
+                Group of Companies
+              </span>
+            </div>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-10">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className={`text-sm font-medium transition-colors duration-200 hover:text-amber-500 ${
-                  isScrolled ? 'text-slate-700' : 'text-slate-200'
-                }`}
+                className="text-sm font-medium uppercase tracking-widest transition-all duration-300 hover:text-[#d4af37] text-stone-300 relative group"
               >
                 {link.name}
+                <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#d4af37] transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </div>
@@ -57,9 +60,8 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 rounded-md focus:outline-none ${
-                isScrolled ? 'text-slate-900' : 'text-white'
-              }`}
+              className="p-2 text-stone-300 hover:text-[#d4af37] transition-colors"
+              aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -69,14 +71,14 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="md:hidden bg-[#0c0a09] border-t border-stone-800 absolute w-full shadow-2xl animate-in slide-in-from-top-5 duration-300">
+          <div className="px-8 py-8 space-y-4">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-amber-600 hover:bg-slate-50"
+                className="block text-lg font-serif text-stone-300 hover:text-[#d4af37] hover:pl-2 transition-all duration-300"
               >
                 {link.name}
               </a>
