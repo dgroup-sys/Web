@@ -4,7 +4,6 @@ import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Sectors from '@/components/Sectors';
 import Values from '@/components/Values';
-import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
 export default function App() {
@@ -16,7 +15,6 @@ export default function App() {
         <About />
         <Sectors />
         <Values />
-        <Contact />
       </main>
       <Footer />
     </div>
